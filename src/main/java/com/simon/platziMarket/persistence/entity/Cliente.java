@@ -1,9 +1,7 @@
 package com.simon.platziMarket.persistence.entity;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name="clientes")
@@ -13,6 +11,11 @@ public class Cliente {
     private String nombre;
     private String apellidos;
     private Integer celular;
+    @Column(name="correo_electronico")
+    private String correoElectrocnico;
+
+    @OneToMany(mappedBy="cliente")
+    private List<Compra> compras;
 
     public String getId() {
         return id;
@@ -41,6 +44,7 @@ public class Cliente {
     public Integer getCelular() {
         return celular;
     }
+    private String direccion;
 
     public void setCelular(Integer celular) {
         this.celular = celular;
@@ -61,9 +65,4 @@ public class Cliente {
     public void setCorreoElectrocnico(String correoElectrocnico) {
         this.correoElectrocnico = correoElectrocnico;
     }
-
-    private String direccion;
-
-    @Column(name="correo_electronico")
-    private String correoElectrocnico;
 }

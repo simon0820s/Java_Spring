@@ -11,7 +11,7 @@ public class Producto{
     @Column(name="id_producto")
     private Integer idProducto;
 
-    private String name;
+    private String nombre;
     @Column(name="id_categoria")
     private Integer idCategoria;
 
@@ -26,6 +26,10 @@ public class Producto{
 //Getter Setter
     private Boolean estado;
 
+    @ManyToOne
+    @JoinColumn(name="id_categoria",insertable = false,updatable = false)
+    private Categoria categoria;
+
     public Integer getIdProducto() {
         return idProducto;
     }
@@ -34,12 +38,12 @@ public class Producto{
         this.idProducto = idProducto;
     }
 
-    public String getName() {
-        return name;
+    public String getNombre() {
+        return nombre;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
 
     public Integer getIdCategoria() {
